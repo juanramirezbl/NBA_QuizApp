@@ -1,5 +1,8 @@
 package com.example.nba_quizapp;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -124,12 +128,32 @@ public class QuizActivity extends AppCompatActivity {
         if (answerIndex == currentQuestion.getCorrectAnswerIndex()) {
             score += 3;
             Toast.makeText(QuizActivity.this, "Respuesta correcta", Toast.LENGTH_SHORT).show();
+            updateScore();
+            showNextQuestion();
         } else {
             score -= 2;
             Toast.makeText(QuizActivity.this, "Respuesta incorrecta", Toast.LENGTH_SHORT).show();
+            updateScore();
+            showFailureDialog();
         }
-        updateScore();
-        showNextQuestion();
+
+
+    }
+    private void showFailureDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Respuesta incorrecta")
+                .setMessage("Que quieres hacer?")
+                .setPositiveButton("Continuar", (dialog, which) -> {
+                    showNextQuestion();
+                })
+                .setNegativeButton("Reiniciar Juego", (dialog, which) -> {
+                    Intent intent = new Intent(QuizActivity.this, QuizActivity.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .setCancelable(false)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
     private void finishQuiz() {
@@ -143,6 +167,8 @@ public class QuizActivity extends AppCompatActivity {
         textViewScore.setText("Puntuación: " + score);
     }
 
-
-
 }
+
+
+
+
