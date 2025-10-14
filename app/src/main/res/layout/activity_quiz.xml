@@ -8,54 +8,47 @@
     tools:context=".QuizActivity">
 
     <TextView
-        android:id="@+id/question1TextView"
+        android:id="@+id/textViewQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="@string/Q1"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+        android:text="Aquí va la pregunta"
+        android:textSize="20sp"
+        android:layout_marginBottom="16dp"/>
 
     <RadioGroup
-        android:id="@+id/optionsRadioGroup"
-        android:layout_width="wrap_content"
+        android:id="@+id/radioGroupOptions"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RadioButton
-            android:id="@+id/option1RadioButton"
+            android:id="@+id/radioButtonOption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Q1A1"
-            android:textSize="20sp" />
+            android:text="Opción 1"/>
 
         <RadioButton
-            android:id="@+id/option2RadioButton"
+            android:id="@+id/radioButtonOption2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Q1A2"
-            android:textSize="20sp" />
+            android:text="Opción 2"/>
 
         <RadioButton
-            android:id="@+id/option3RadioButton"
+            android:id="@+id/radioButtonOption3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Q1A3"
-            android:textSize="20sp" />
+            android:text="Opción 3"/>
 
         <RadioButton
-            android:id="@+id/option4RadioButton"
+            android:id="@+id/radioButtonOption4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Q1A4"
-            android:textSize="20sp" />
+            android:text="Opción 4"/>
     </RadioGroup>
 
     <Button
-        android:id="@+id/confirmButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonConfirm"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        android:text="@string/Confirm" />
-
+        android:layout_marginTop="24dp"
+        android:text="Confirmar"/>
 </LinearLayout>
