@@ -18,6 +18,8 @@ import java.util.List;
 
 public class QuizActivity extends AppCompatActivity {
     private TextView textViewQuestion;
+
+    private TextView textViewScore;
     private RadioGroup radioGroupOptions;
     private RadioButton rb1, rb2, rb3, rb4;
     private Button buttonConfirm;
@@ -37,6 +39,7 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         // Initialize UI elements
+        textViewScore = findViewById(R.id.textViewScore);
         textViewQuestion = findViewById(R.id.textViewQuestion);
         radioGroupOptions = findViewById(R.id.radioGroupOptions);
         rb1 = findViewById(R.id.radioButtonOption1);
@@ -46,6 +49,8 @@ public class QuizActivity extends AppCompatActivity {
         buttonConfirm = findViewById(R.id.buttonConfirm);
 
         fillQuestionList();
+        score = 0;
+        updateScore();
         questionCountTotal = questionList.size();
         showNextQuestion();
 
@@ -123,6 +128,7 @@ public class QuizActivity extends AppCompatActivity {
             score -= 2;
             Toast.makeText(QuizActivity.this, "Respuesta incorrecta", Toast.LENGTH_SHORT).show();
         }
+        updateScore();
         showNextQuestion();
     }
 
@@ -131,6 +137,10 @@ public class QuizActivity extends AppCompatActivity {
         resultIntent.putExtra("EXTRA_SCORE", score);
         startActivity(resultIntent);
         finish();
+    }
+
+    private void updateScore() {
+        textViewScore.setText("Puntuación: " + score);
     }
 
 

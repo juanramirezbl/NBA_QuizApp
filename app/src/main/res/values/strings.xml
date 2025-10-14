@@ -4,13 +4,10 @@
     <string name="Confirm">Confirmar</string>
     <string name="CorrectAnswer">Respuesta correcta</string>
     <string name="IncorrectAnswer">Respuesta incorrecta</string>
+    <string name="score_text">Puntuación: 0</string>"
+    <string name="question_text">Aqui va la pregunta</string>
 
-    <!--Pregunta 1-->
-    <string name="Q1">Quien es el jugador que tiene más anillos de campeón en la historia?</string>
-    <string name="Q1A1">Lebron James</string>
-    <string name="Q1A2">Kobe Bryant</string>
-    <string name="Q1A3">Michael Jordan</string>
-    <string name="Q1A4">Bill Russell</string>
+
 
 
 </resources>
