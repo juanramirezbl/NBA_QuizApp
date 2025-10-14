@@ -11,6 +11,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
@@ -22,7 +25,7 @@ import java.util.List;
 
 public class QuizActivity extends AppCompatActivity {
     private TextView textViewQuestion;
-
+    private ListView listViewOptions;
     private TextView textViewScore;
     private RadioGroup radioGroupOptions;
     private RadioButton rb1, rb2, rb3, rb4;
@@ -46,6 +49,7 @@ public class QuizActivity extends AppCompatActivity {
         textViewScore = findViewById(R.id.textViewScore);
         textViewQuestion = findViewById(R.id.textViewQuestion);
         radioGroupOptions = findViewById(R.id.radioGroupOptions);
+        listViewOptions = findViewById(R.id.listViewOptions);
         rb1 = findViewById(R.id.radioButtonOption1);
         rb2 = findViewById(R.id.radioButtonOption2);
         rb3 = findViewById(R.id.radioButtonOption3);
@@ -62,8 +66,14 @@ public class QuizActivity extends AppCompatActivity {
             if (radioGroupOptions.getCheckedRadioButtonId() == -1) {
                 Toast.makeText(QuizActivity.this, "Por favor, selecciona una respuesta", Toast.LENGTH_SHORT).show();
             } else {
-                checkAnswer();
+                RadioButton rbSelected = findViewById(radioGroupOptions.getCheckedRadioButtonId());
+                int answerIndex = radioGroupOptions.indexOfChild(rbSelected);
+                checkAnswer(answerIndex);
             }
+        });
+
+        listViewOptions.setOnItemClickListener((parent, view, position, id) -> {
+            checkAnswer(position);
         });
     }
 
@@ -111,33 +121,43 @@ public class QuizActivity extends AppCompatActivity {
         if (questionCounter < questionCountTotal) {
             currentQuestion = questionList.get(questionCounter);
             textViewQuestion.setText(currentQuestion.getQuestionText());
-            rb1.setText(currentQuestion.getOptions().get(0));
-            rb2.setText(currentQuestion.getOptions().get(1));
-            rb3.setText(currentQuestion.getOptions().get(2));
-            rb4.setText(currentQuestion.getOptions().get(3));
+
+            if(questionCounter == 1){
+                radioGroupOptions.setVisibility(View.GONE);
+                listViewOptions.setVisibility(View.VISIBLE);
+                buttonConfirm.setVisibility(View.GONE);
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, currentQuestion.getOptions());
+                listViewOptions.setAdapter(adapter);
+            } else{
+
+                radioGroupOptions.setVisibility(View.VISIBLE);
+                listViewOptions.setVisibility(View.GONE);
+                buttonConfirm.setVisibility(View.VISIBLE);
+
+                rb1.setText(currentQuestion.getOptions().get(0));
+                rb2.setText(currentQuestion.getOptions().get(1));
+                rb3.setText(currentQuestion.getOptions().get(2));
+                rb4.setText(currentQuestion.getOptions().get(3));
+
+            }
             questionCounter++;
         } else {
             finishQuiz();
         }
     }
 
-    private void checkAnswer() {
-        RadioButton rbSelected = findViewById(radioGroupOptions.getCheckedRadioButtonId());
-        int answerIndex = radioGroupOptions.indexOfChild(rbSelected);
-
-        if (answerIndex == currentQuestion.getCorrectAnswerIndex()) {
+    private void checkAnswer(int selectedAnswerIndex) {
+        if (selectedAnswerIndex == currentQuestion.getCorrectAnswerIndex()) {
             score += 3;
             Toast.makeText(QuizActivity.this, "Respuesta correcta", Toast.LENGTH_SHORT).show();
             updateScore();
             showNextQuestion();
-        } else {
-            score -= 2;
-            Toast.makeText(QuizActivity.this, "Respuesta incorrecta", Toast.LENGTH_SHORT).show();
+        }else{
+            score =-2;
             updateScore();
             showFailureDialog();
         }
-
-
     }
     private void showFailureDialog() {
         new AlertDialog.Builder(this)
