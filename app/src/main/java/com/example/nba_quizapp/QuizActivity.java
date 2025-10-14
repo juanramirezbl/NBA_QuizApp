@@ -122,7 +122,7 @@ public class QuizActivity extends AppCompatActivity {
             currentQuestion = questionList.get(questionCounter);
             textViewQuestion.setText(currentQuestion.getQuestionText());
 
-            if(questionCounter == 1){
+            if(questionCounter == 1 || questionCounter == 3){
                 radioGroupOptions.setVisibility(View.GONE);
                 listViewOptions.setVisibility(View.VISIBLE);
                 buttonConfirm.setVisibility(View.GONE);
