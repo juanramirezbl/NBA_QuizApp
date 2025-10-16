@@ -1,8 +1,5 @@
-package com.example.nba_quizapp;
+package com.example.nba_quizapp.ui;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,13 +8,17 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ImageView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.nba_quizapp.model.ImageQuestion;
+import com.example.nba_quizapp.model.Question;
+import com.example.nba_quizapp.R;
+import com.example.nba_quizapp.model.TextQuestion;
 
 import java.util.ArrayList;
 import java.util.Arrays;

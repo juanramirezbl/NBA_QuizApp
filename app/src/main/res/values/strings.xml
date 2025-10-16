@@ -1,13 +1,9 @@
 <resources>
-    <string name="app_name">NBA_QuizApp</string>
+    <string name="app_name">NBA QUIZ</string>
     <string name="start_button">Comenzar</string>
     <string name="Confirm">Confirmar</string>
     <string name="CorrectAnswer">Respuesta correcta</string>
     <string name="IncorrectAnswer">Respuesta incorrecta</string>
     <string name="score_text">Puntuación: 0</string>"
     <string name="question_text">Aqui va la pregunta</string>
-
-
-
-
 </resources>

@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NBA_QuizApp">
         <activity
-            android:name=".ResultActivity"
+            android:name=".ui.ResultActivity"
             android:exported="false" />
         <activity
-            android:name=".QuizActivity"
+            android:name=".ui.QuizActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

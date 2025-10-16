@@ -1,4 +1,4 @@
-package com.example.nba_quizapp;
+package com.example.nba_quizapp.model;
 
 import java.util.List;
 
