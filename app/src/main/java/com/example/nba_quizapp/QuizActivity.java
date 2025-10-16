@@ -14,7 +14,7 @@ import android.widget.Toast;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+import android.widget.ImageView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +24,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class QuizActivity extends AppCompatActivity {
+
+    private ImageView imageViewQuestion;
     private TextView textViewQuestion;
     private ListView listViewOptions;
     private TextView textViewScore;
@@ -50,6 +52,7 @@ public class QuizActivity extends AppCompatActivity {
         textViewQuestion = findViewById(R.id.textViewQuestion);
         radioGroupOptions = findViewById(R.id.radioGroupOptions);
         listViewOptions = findViewById(R.id.listViewOptions);
+        imageViewQuestion = findViewById(R.id.imageViewQuestion);
         rb1 = findViewById(R.id.radioButtonOption1);
         rb2 = findViewById(R.id.radioButtonOption2);
         rb3 = findViewById(R.id.radioButtonOption3);
@@ -80,35 +83,36 @@ public class QuizActivity extends AppCompatActivity {
     private void fillQuestionList() {
         questionList = new ArrayList<>();
         // Pregunta 1
-        questionList.add(new Question(
+        questionList.add(new TextQuestion(
                 "¿Qué jugador ha ganado más campeonatos de la NBA?",
                 Arrays.asList("Michael Jordan", "Bill Russell", "Kareem Abdul-Jabbar", "LeBron James"),
                 1
         ));
 
         // Pregunta 2
-        questionList.add(new Question(
-                "¿Qué equipo seleccionó a Kobe Bryant en el Draft de 1996?",
-                Arrays.asList("Los Angeles Lakers", "Boston Celtics", "Charlotte Hornets", "New Jersey Nets"),
-                2
+        questionList.add(new ImageQuestion(
+                "¿A qué equipo pertenece este logo?",
+                R.drawable.golden_state,
+                Arrays.asList("Boston Celtics", "Golden State Warriors", "Miami Heat", "Cleveland Cavaliers"),
+                1
         ));
 
         // Pregunta 3
-        questionList.add(new Question(
+        questionList.add(new TextQuestion(
                 "¿Quién es el máximo anotador de la historia de la NBA?",
                 Arrays.asList("Michael Jordan", "Kareem Abdul-Jabbar", "Kobe Bryant", "LeBron James"),
                 3
         ));
 
         // Pregunta 4
-        questionList.add(new Question(
+        questionList.add(new TextQuestion(
                 "¿En qué año se fundó la NBA (originalmente como BAA)?",
                 Arrays.asList("1946", "1950", "1962", "1971"),
                 0
         ));
 
         // Pregunta 5
-        questionList.add(new Question(
+        questionList.add(new TextQuestion(
                 "¿Qué equipo tiene el récord de más victorias en una sola temporada regular?",
                 Arrays.asList("Chicago Bulls", "Los Angeles Lakers", "Boston Celtics", "Golden State Warriors"),
                 3
@@ -120,7 +124,24 @@ public class QuizActivity extends AppCompatActivity {
 
         if (questionCounter < questionCountTotal) {
             currentQuestion = questionList.get(questionCounter);
-            textViewQuestion.setText(currentQuestion.getQuestionText());
+
+
+            if (currentQuestion instanceof ImageQuestion) {
+                ImageQuestion imageQuestion = (ImageQuestion) currentQuestion;
+                imageViewQuestion.setVisibility(View.VISIBLE);
+                textViewQuestion.setVisibility(View.VISIBLE);
+
+                imageViewQuestion.setImageResource(imageQuestion.getImageResourceId());
+                textViewQuestion.setText(imageQuestion.getQuestionText());
+
+            } else if (currentQuestion instanceof TextQuestion) {
+                // Es una pregunta de texto
+                TextQuestion textQuestion = (TextQuestion) currentQuestion;
+                imageViewQuestion.setVisibility(View.GONE);
+                textViewQuestion.setVisibility(View.VISIBLE);
+
+                textViewQuestion.setText(textQuestion.getQuestionText());
+            }
 
             if(questionCounter == 1 || questionCounter == 3){
                 radioGroupOptions.setVisibility(View.GONE);
@@ -129,8 +150,7 @@ public class QuizActivity extends AppCompatActivity {
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, currentQuestion.getOptions());
                 listViewOptions.setAdapter(adapter);
-            } else{
-
+            } else {
                 radioGroupOptions.setVisibility(View.VISIBLE);
                 listViewOptions.setVisibility(View.GONE);
                 buttonConfirm.setVisibility(View.VISIBLE);
@@ -139,8 +159,8 @@ public class QuizActivity extends AppCompatActivity {
                 rb2.setText(currentQuestion.getOptions().get(1));
                 rb3.setText(currentQuestion.getOptions().get(2));
                 rb4.setText(currentQuestion.getOptions().get(3));
-
             }
+
             questionCounter++;
         } else {
             finishQuiz();

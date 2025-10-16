@@ -8,21 +8,30 @@
     tools:context=".QuizActivity">
 
     <TextView
-        android:id="@+id/textViewScore"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/score_text"
-        android:textSize="18sp"
-        android:gravity="end"
-        android:layout_marginBottom="16dp"/>
+    android:id="@+id/textViewScore"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="end"
+    android:text="@string/score_text"
+    android:textSize="18sp"
+    android:layout_marginBottom="16dp"/>
+
+    <ImageView
+    android:id="@+id/imageViewQuestion"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="16dp"
+    android:visibility="gone"
+    tools:src="@drawable/golden_state" />
 
     <TextView
-        android:id="@+id/textViewQuestion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/question_text"
-        android:textSize="20sp"
-        android:layout_marginBottom="16dp"/>
+    android:id="@+id/textViewQuestion"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center" android:text="@string/question_text"
+    android:textSize="20sp"
+    android:layout_marginBottom="16dp"/>
 
     <RadioGroup
         android:id="@+id/radioGroupOptions"
@@ -59,17 +68,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:visibility="visible"/> <View
+        tools:visibility="visible"/>
+
+    <View
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="1"/>
-
-
 
     <Button
         android:id="@+id/buttonConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Confirma"/>
+        android:text="Confirmar"/>
+
 </LinearLayout>

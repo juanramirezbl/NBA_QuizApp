@@ -2,19 +2,14 @@ package com.example.nba_quizapp;
 
 import java.util.List;
 
-public class Question {
-    private String questionText;
+
+public abstract class Question {
     private List<String> options;
     private int correctAnswerIndex;
 
-    public Question(String questionText, List<String> options, int correctAnswerIndex) {
-        this.questionText = questionText;
+    public Question(List<String> options, int correctAnswerIndex) {
         this.options = options;
         this.correctAnswerIndex = correctAnswerIndex;
-    }
-
-    public String getQuestionText() {
-        return questionText;
     }
 
     public List<String> getOptions() {
@@ -24,6 +19,4 @@ public class Question {
     public int getCorrectAnswerIndex() {
         return correctAnswerIndex;
     }
-
-
 }
