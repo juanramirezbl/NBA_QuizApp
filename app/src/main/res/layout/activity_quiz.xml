@@ -4,34 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="24dp"
+    android:background="@color/background_light"
     tools:context=".QuizActivity">
 
     <TextView
-    android:id="@+id/textViewScore"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="end"
-    android:text="@string/score_text"
-    android:textSize="18sp"
-    android:layout_marginBottom="16dp"/>
+        android:id="@+id/textViewScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/score_text"
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"/>
 
     <ImageView
-    android:id="@+id/imageViewQuestion"
-    android:layout_width="200dp"
-    android:layout_height="200dp"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginBottom="16dp"
-    android:visibility="gone"
-    tools:src="@drawable/golden_state" />
+        android:id="@+id/imageViewQuestion"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        tools:src="@drawable/golden_state" />
 
     <TextView
-    android:id="@+id/textViewQuestion"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center" android:text="@string/question_text"
-    android:textSize="20sp"
-    android:layout_marginBottom="16dp"/>
+        android:id="@+id/textViewQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/question_text"
+        android:textColor="@color/text_primary"
+        android:textSize="22sp"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="32dp"/>
 
     <RadioGroup
         android:id="@+id/radioGroupOptions"
@@ -40,27 +45,35 @@
 
         <RadioButton
             android:id="@+id/radioButtonOption1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Opción 1"/>
+            android:text="Opción 1"
+            android:textSize="18sp"
+            android:paddingVertical="8dp"/>
 
         <RadioButton
             android:id="@+id/radioButtonOption2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Opción 2"/>
+            android:text="Opción 2"
+            android:textSize="18sp"
+            android:paddingVertical="8dp"/>
 
         <RadioButton
             android:id="@+id/radioButtonOption3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Opción 3"/>
+            android:text="Opción 3"
+            android:textSize="18sp"
+            android:paddingVertical="8dp"/>
 
         <RadioButton
             android:id="@+id/radioButtonOption4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Opción 4"/>
+            android:text="Opción 4"
+            android:textSize="18sp"
+            android:paddingVertical="8dp"/>
     </RadioGroup>
 
     <ListView
@@ -68,6 +81,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp"
         tools:visibility="visible"/>
 
     <View
@@ -78,8 +93,12 @@
     <Button
         android:id="@+id/buttonConfirm"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="24dp"
-        android:text="Confirmar"/>
+        android:background="@drawable/rounded_button_background"
+        android:text="Confirmar"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
 </LinearLayout>

@@ -82,14 +82,14 @@ public class QuizActivity extends AppCompatActivity {
 
     private void fillQuestionList() {
         questionList = new ArrayList<>();
-        // Pregunta 1
+        // Q1
         questionList.add(new TextQuestion(
                 "¿Qué jugador ha ganado más campeonatos de la NBA?",
                 Arrays.asList("Michael Jordan", "Bill Russell", "Kareem Abdul-Jabbar", "LeBron James"),
                 1
         ));
 
-        // Pregunta 2
+        // Q2
         questionList.add(new ImageQuestion(
                 "¿A qué equipo pertenece este logo?",
                 R.drawable.golden_state,
@@ -97,21 +97,21 @@ public class QuizActivity extends AppCompatActivity {
                 1
         ));
 
-        // Pregunta 3
+        // Q3
         questionList.add(new TextQuestion(
                 "¿Quién es el máximo anotador de la historia de la NBA?",
                 Arrays.asList("Michael Jordan", "Kareem Abdul-Jabbar", "Kobe Bryant", "LeBron James"),
                 3
         ));
 
-        // Pregunta 4
+        // Q4
         questionList.add(new TextQuestion(
                 "¿En qué año se fundó la NBA (originalmente como BAA)?",
                 Arrays.asList("1946", "1950", "1962", "1971"),
                 0
         ));
 
-        // Pregunta 5
+        // Q5
         questionList.add(new TextQuestion(
                 "¿Qué equipo tiene el récord de más victorias en una sola temporada regular?",
                 Arrays.asList("Chicago Bulls", "Los Angeles Lakers", "Boston Celtics", "Golden State Warriors"),
@@ -135,7 +135,6 @@ public class QuizActivity extends AppCompatActivity {
                 textViewQuestion.setText(imageQuestion.getQuestionText());
 
             } else if (currentQuestion instanceof TextQuestion) {
-                // Es una pregunta de texto
                 TextQuestion textQuestion = (TextQuestion) currentQuestion;
                 imageViewQuestion.setVisibility(View.GONE);
                 textViewQuestion.setVisibility(View.VISIBLE);
@@ -146,7 +145,7 @@ public class QuizActivity extends AppCompatActivity {
             if(questionCounter == 1 || questionCounter == 3){
                 radioGroupOptions.setVisibility(View.GONE);
                 listViewOptions.setVisibility(View.VISIBLE);
-                buttonConfirm.setVisibility(View.GONE);
+                buttonConfirm.setVisibility(View.VISIBLE);
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, currentQuestion.getOptions());
                 listViewOptions.setAdapter(adapter);
