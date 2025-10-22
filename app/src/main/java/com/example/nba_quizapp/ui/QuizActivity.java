@@ -182,7 +182,7 @@ public class QuizActivity extends AppCompatActivity {
     private void showFailureDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Respuesta incorrecta")
-                .setMessage("Que quieres hacer?")
+                .setMessage("¿Que quieres hacer?")
                 .setPositiveButton("Continuar", (dialog, which) -> {
                     showNextQuestion();
                 })

@@ -5,5 +5,5 @@
     <string name="CorrectAnswer">Respuesta correcta</string>
     <string name="IncorrectAnswer">Respuesta incorrecta</string>
     <string name="score_text">Puntuación: 0</string>"
-    <string name="question_text">Aqui va la pregunta</string>
+    <string name="question_text">pregunta</string>
 </resources>
