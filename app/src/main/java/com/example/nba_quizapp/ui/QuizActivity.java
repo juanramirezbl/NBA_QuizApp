@@ -146,7 +146,7 @@ public class QuizActivity extends AppCompatActivity {
             if(questionCounter == 1 || questionCounter == 3){
                 radioGroupOptions.setVisibility(View.GONE);
                 listViewOptions.setVisibility(View.VISIBLE);
-                buttonConfirm.setVisibility(View.VISIBLE);
+                buttonConfirm.setVisibility(View.GONE);
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, currentQuestion.getOptions());
                 listViewOptions.setAdapter(adapter);
@@ -174,7 +174,7 @@ public class QuizActivity extends AppCompatActivity {
             updateScore();
             showNextQuestion();
         }else{
-            score =-2;
+            score -=2;
             updateScore();
             showFailureDialog();
         }
